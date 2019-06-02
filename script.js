@@ -33,50 +33,19 @@ var data = [
     },
 ];
 
-let createBox;
-let addData;
-let runStyles;
-let bElements;
-const body = document.getElementById('body');
-const highlighted = 'highlighted';
-const special_header = 'special-header';
-const imp = 'important';
-
-createBox = () => {
-    for (let i = 0; i < 5; i++) {
-        let box = '<div class="box"><div class="header"></div><div class="box-content"></div></div>';
-        body.innerHTML = box + body.innerHTML;
+const createDiv = () => {
+    for (let i = 0; i < data.length; i++) {
+        let newBox = document.createElement("div");
+        newBox.setAttribute("id", data[i].id);
+        const {categories} = data[i];
+        for (let j =0; j<categories.length; j++) {
+            newBox.classList.add(categories[j]);
+        }
+        const headerBox = document.createElement("h1");
+        headerBox.innerText = data[i].title;
+        newBox.appendChild(headerBox);
+        newBox.innerHTML = newBox.innerHTML + data[i].content;
+        document.body.appendChild(newBox);
     }
 };
-
-addData = () => {
-    for (let i = 0; i < 5; i++) {
-        let dataObj = data[i];
-        let header = document.querySelectorAll('.header')[i];
-        let content = document.querySelectorAll('.box-content')[i];
-        bElements = document.querySelectorAll('.box')[i];
-        bElements.id = dataObj.id;
-        header.innerHTML = dataObj.title;
-        content.innerHTML = dataObj.content;
-    }
-};
-
-runStyles = () => {
-    for (let i = 0; i < 5; i++) {
-        bElements = document.querySelectorAll('.box')[i];
-        let bHeader = document.querySelectorAll('.header')[i];
-        if (data[i].categories.includes(highlighted)) {
-            bElements.className += " highlighted";
-        }
-        if (data[i].categories.includes(imp)) {
-            bElements.className += " important";
-        }
-        if (data[i].categories.includes(special_header)) {
-            bHeader.className += " special-header";
-        }
-    }
-};
-
-createBox();
-addData();
-runStyles();
+createDiv();

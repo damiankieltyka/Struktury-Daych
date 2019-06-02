@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-.box {
+div {
     width: 200px;
     height: 150px;
     border: 1px solid black;
@@ -12,6 +12,17 @@ body {
     padding: 0;
     float: left;
     opacity: 0.7;
+}
+
+h1 {
+    border-bottom: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+    height: 20%;
+}
+
+p {
+    text-align: center;
 }
 
 .highlighted {
@@ -24,13 +35,6 @@ body {
 
 .important {
     opacity: 1.0;
-}
-
-.header {
-    height: 20%;
-    text-align: center;
-    border-bottom: 1px solid black;
-    border-radius: 4px;
 }
 
 .box-content {
